@@ -11,17 +11,20 @@ This directory contains VS Code settings and recommendations for maintaining con
 ## Required Extensions
 
 1. **markdownlint** (DavidAnson.vscode-markdownlint)
+
    - Provides markdown linting and formatting
    - Enforces consistent styling
    - Configured to match our standards
 
 2. **Markdown All in One** (yzhang.markdown-all-in-one)
+
    - Keyboard shortcuts
    - Table of contents
    - List editing
    - Preview
 
 3. **GitHub Markdown Preview** (bierner.markdown-preview-github-styles)
+
    - GitHub-style markdown preview
    - Matches how rules appear in GitHub
 

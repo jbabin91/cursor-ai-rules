@@ -1,0 +1,50 @@
+---
+description: Memories for Cursor AI
+globs: *
+---
+# Project Memories
+
+This file contains important project knowledge, patterns, and learnings that help maintain consistency and efficiency across coding sessions.
+
+## 1. Project Overview
+
+### Initial Project Setup
+
+- **Context**: Initial creation of the cursor-ai-rules project
+- **Pattern/Solution**: Project organized around rule-based AI assistance with standardized rule formats
+- **Rationale**: Structured approach to managing AI behavior and maintaining consistent coding standards
+- **Added**: 2024-02-22
+
+## 2. Code Patterns
+
+### Memory System Validation
+
+- **Context**: Testing the memory system functionality
+- **Pattern/Solution**: To validate memory entries:
+  1. Add a test entry with specific, unique information
+  2. Reference this information in a future interaction
+  3. Verify the AI can correctly recall and apply the information
+- **Rationale**: Ensures the memory system can effectively store and retrieve project knowledge
+- **Examples**: This entry itself serves as a test case - try asking about "memory validation steps" in a future interaction
+- **Added**: 2024-02-22
+
+## 3. Technical Debt & Improvements
+
+*No entries yet*
+
+## 4. Integration Points
+
+*No entries yet*
+
+## 5. Development Workflow
+
+### Rule File Structure
+
+- **Context**: Standard structure for rule files in the project
+- **Pattern/Solution**: All rule files must include:
+  - Frontmatter with description and globs
+  - Metadata section with version and dependencies
+  - Clear sections for guidelines and instructions
+- **Rationale**: Ensures consistency and maintainability across all rule files
+- **Examples**: See `rule-standards.mdc` for the complete specification
+- **Added**: 2024-02-22

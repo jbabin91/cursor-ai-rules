@@ -1,5 +1,320 @@
-<CRITICAL_INSTRUCTIONS>
+# Cursor AI Global Rules
 
-As you work on code, if you discover any lessons or principles about this project which in any way may help you in future coding sessions then be sure to note those lessons in the CURSOR_MEMORY.md file which is yours to freely edit as you see fit. Refer to this CURSOR_MEMORY.md file for guidance during all coding sessions with this project.
+> A comprehensive guide for AI assistance in building modern, type-safe, and maintainable applications.
 
-</CRITICAL_INSTRUCTIONS>
+## Core Values & Interaction Model
+
+### Priorities & Standards
+
+```mermaid
+Core Priorities
+├── User Value
+│   ├── Security (5/5)
+│   ├── Accessibility (4/5)
+│   ├── Reliability (4/5)
+│   ├── Performance (4/5)
+│   └── DX (3/5)
+└── Execution Focus
+    ├── Long-term > Short-term
+    ├── Quality > Quantity
+    ├── User needs > Technical excellence
+    └── Solutions > Problems
+```
+
+### AI Communication Protocol
+
+- **Response Structure**
+  - Start with random animal emoji (🦊, 🐼, etc.)
+  - Use markdown formatting consistently
+  - Include precise file/line references (```startLine:endLine:filepath)
+  - Break down complex tasks into manageable steps
+  - Provide context upfront
+  - Focus on solutions rather than problems
+
+- **Code Analysis & Solutions**
+  - Analyze existing code before suggesting changes
+  - Respect existing patterns and conventions
+  - Provide clear, actionable solutions
+  - Explain reasoning and trade-offs
+  - Include necessary imports and types
+  - Ensure code is production-ready
+
+## Technical Standards
+
+### Core Technology Stack
+
+```mermaid
+Technology Stack
+├── Frontend
+│   ├── Core: React 19 + TypeScript
+│   ├── Routing: TanStack Router
+│   ├── State: Zustand + TanStack Query
+│   └── UI: Shadcn/ui + Tailwind
+├── Backend
+│   ├── API: Hono.js/TanStack Start
+│   ├── Database: PostgreSQL + Redis
+│   └── Auth: Better-Auth + OAuth
+└── Development
+    ├── Testing: Vitest + Playwright
+    ├── Quality: ESLint + Prettier
+    └── Build: Turborepo + PNPM
+```
+
+### Code Quality Standards
+
+- **Structure**
+
+  ```typescript
+  // Function size: Max 50 lines
+  // File size: Max 300 lines
+  // Component structure example:
+  export function UserProfile({ id }: { id: string }) {
+    // 1. Hooks
+    const user = useUser(id)
+
+    // 2. Derived state
+    const fullName = useMemo(() =>
+      `${user.firstName} ${user.lastName}`,
+      [user]
+    )
+
+    // 3. Handlers
+    function handleUpdate() {
+      // ...
+    }
+
+    // 4. Render
+    return (/* JSX */)
+  }
+  ```
+
+- **TypeScript Preferences**
+
+  ```typescript
+  // ✅ Correct
+  type Status = 'idle' | 'loading' | 'success' | 'error'
+  type Props = {
+    id: string
+    onUpdate: (id: string) => void
+  }
+
+  // ❌ Avoid
+  interface Status {
+    // ...
+  }
+  enum StatusEnum {
+    // ...
+  }
+  ```
+
+### Security & Performance
+
+- **Security Checklist**
+  - Input validation and sanitization
+  - Proper access controls
+  - Secure data handling
+  - CORS and CSP policies
+  - Rate limiting implementation
+
+- **Performance Standards**
+  - Lazy loading for routes/components
+  - Efficient state management
+  - Proper caching strategies
+  - Bundle size optimization
+  - Mobile-first approach
+
+## AI Workflow Modes
+
+### 1. Planning Mode
+
+```mermaid
+Planning Process
+├── Analysis
+│   ├── Requirements gathering
+│   ├── Clarifying questions (4-6)
+│   └── Constraint identification
+├── Design
+│   ├── Architecture proposal
+│   ├── Technology selection
+│   └── Implementation plan
+└── Execution
+    ├── Phase-based implementation
+    ├── Progress tracking
+    └── Quality validation
+```
+
+### 2. Development Mode
+
+- **Code Generation**
+  - Type-safe by default
+  - Follow established patterns
+  - Include tests
+  - Document complex logic
+  - Handle edge cases
+
+- **Code Review**
+  - Security review
+  - Performance impact
+  - Accessibility check
+  - Best practices validation
+
+### 3. Debugging Mode
+
+1. **Problem Analysis**
+   - Identify potential causes
+   - Add strategic logging
+   - Check error patterns
+   - Analyze dependencies
+
+2. **Solution Implementation**
+   - Implement targeted fix
+   - Verify solution
+   - Clean up debug code
+   - Document findings
+
+## Quality Gates
+
+```mermaid
+Quality Validation
+├── Security (Must Pass)
+│   ├── Vulnerability checks
+│   ├── Input validation
+│   ├── Authentication
+│   └── Authorization
+├── Accessibility (Must Pass)
+│   ├── WCAG compliance
+│   ├── Keyboard navigation
+│   ├── Screen reader support
+│   └── Color contrast
+├── Performance (Should Pass)
+│   ├── Load time < 3s
+│   ├── FCP < 1.5s
+│   ├── TTI < 3.5s
+│   └── Bundle size limits
+└── Code Quality (Should Pass)
+    ├── Test coverage > 90%
+    ├── No TypeScript errors
+    ├── Linting passes
+    └── Documentation complete
+```
+
+## Success Metrics
+
+### System Health
+
+- Performance trends
+- Error rates
+- Security posture
+- User satisfaction
+
+### Development Efficiency
+
+- Code quality metrics
+- Development velocity
+- Bug resolution time
+- Documentation coverage
+
+## Rule Management & Organization
+
+### Directory Structure
+
+```mermaid
+Rule Structure
+├── .cursor/rules/
+│   ├── cursor-global-rules.mdc   # Global standards
+│   ├── CURSOR_MEMORY.mdc         # Project memories
+│   │
+│   ├── core/                     # Core rules
+│   │   ├── formatting/
+│   │   ├── security/
+│   │   └── testing/
+│   │
+│   ├── languages/               # Language rules
+│   │   ├── typescript/
+│   │   └── python/
+│   │
+│   └── project/                # Project rules
+       ├── architecture/
+       └── workflows/
+```
+
+### Rule Standards
+
+1. **File Format**
+
+   ```yaml
+   ---
+   description: Brief description
+   globs: ["**/*.{ts,tsx}"]
+   ---
+   ```
+
+2. **Metadata Requirements**
+
+   ```markdown
+   <details>
+   <summary>Rule Metadata</summary>
+
+   - **Version**: 1.0.0
+   - **Created**: [DATE]
+   - **Updated**: [DATE]
+   - **Dependencies**: [LIST]
+   - **Tags**: [LIST]
+   </details>
+   ```
+
+3. **Glob Pattern Guidelines**
+   - Use brace expansion: `{src,app,lib}`
+   - Depth-agnostic matches: `**/feature/**`
+   - Multiple patterns in arrays
+   - Document pattern choices
+
+## Memory Management
+
+### Memory Structure
+
+```mermaid
+Memory System
+├── Project Overview
+│   ├── Architecture decisions
+│   ├── Core technologies
+│   └── Key constraints
+├── Code Patterns
+│   ├── Implementation patterns
+│   ├── Naming conventions
+│   └── Common solutions
+├── Technical Debt
+│   ├── Known limitations
+│   └── Planned improvements
+└── Development Workflow
+    ├── Setup procedures
+    └── Testing patterns
+```
+
+### Memory Entry Format
+
+```markdown
+#### [Topic Name]
+- **Context**: When/where this applies
+- **Pattern/Solution**: Detailed description
+- **Rationale**: Why this approach
+- **Examples**: Implementation references
+- **Added**: [YYYY-MM-DD]
+```
+
+### Memory Management Guidelines
+
+1. **Creation Triggers**
+   - Important project patterns
+   - Project-specific conventions
+   - Technical constraints
+   - Recurring solutions
+   - New best practices
+
+2. **Maintenance Rules**
+   - Regular validation
+   - Clear categorization
+   - Version tracking
+   - Reference preservation
+
+> 💡 **Note**: These rules ensure consistent, high-quality code while maintaining efficient communication. Project-specific extensions can be defined in additional rule files.

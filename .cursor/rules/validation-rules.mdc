@@ -1,0 +1,253 @@
+---
+description: Comprehensive validation rules for Cursor AI rules and code quality
+globs: [".cursor/rules/**/*.mdc", "**/*.{ts,tsx,js,jsx}"]
+---
+
+<details>
+<summary>Rule Metadata</summary>
+
+- **Version**: 1.0.0
+- **Created**: 2024-02-22
+- **Updated**: 2024-02-22
+- **Dependencies**:
+  - cursor-global-rules
+- **Tags**:
+  - validation
+  - quality
+  - standards
+
+</details>
+
+# Validation Rules
+
+> Comprehensive validation rules for ensuring quality and consistency across rules and code.
+
+## Rule File Validation
+
+### Required Structure
+
+```mermaid
+Rule Structure Check
+├── Frontmatter
+│   ├── Valid description
+│   ├── Valid globs
+│   └── Optional metadata
+├── Content Structure
+│   ├── Title (H1)
+│   ├── Overview
+│   └── Sections (H2+)
+└── Metadata Block
+    ├── Version
+    ├── Dates
+    └── Dependencies
+```
+
+### Frontmatter Validation
+
+```yaml
+# Required fields
+description: string
+globs: string[] | string
+
+# Schema validation
+---
+description: Must be clear and concise
+globs:
+  - Must be valid glob patterns
+  - Must exist in project
+---
+```
+
+### Content Validation
+
+1. **Headers**
+   - Must follow hierarchy (H1 → H2 → H3)
+   - No skipped levels
+   - Clear and descriptive
+
+2. **Code Blocks**
+   - Must specify language
+   - Must be valid syntax
+   - Must follow style guide
+
+3. **Links and References**
+   - Must be valid internal/external links
+   - Must reference existing files/sections
+   - Must use correct line numbers
+
+## Code Quality Validation
+
+### TypeScript/JavaScript
+
+```typescript
+// Function Validation
+function validateFunction(fn: Function): ValidationResult {
+  return {
+    size: validateSize(fn, 50),        // Max 50 lines
+    complexity: validateComplexity(fn), // Max cyclomatic complexity: 10
+    parameters: validateParams(fn, 3),  // Max 3 parameters
+    returns: validateReturns(fn)        // Clear return type
+  }
+}
+
+// File Validation
+function validateFile(file: File): ValidationResult {
+  return {
+    size: validateSize(file, 300),     // Max 300 lines
+    exports: validateExports(file),     // Named exports
+    imports: validateImports(file),     // No circular deps
+    types: validateTypes(file)          // Full type coverage
+  }
+}
+```
+
+### React Components
+
+```typescript
+// Component Validation
+function validateComponent(component: Component): ValidationResult {
+  return {
+    props: validateProps(component),    // Typed props
+    hooks: validateHooks(component),    // Hook rules
+    rendering: validateRender(component), // Render logic
+    effects: validateEffects(component)  // Side effects
+  }
+}
+```
+
+## Quality Gates
+
+### 1. Security Validation
+
+- Input sanitization
+- Authentication checks
+- Authorization rules
+- Data validation
+- API security
+
+### 2. Performance Validation
+
+- Bundle size limits
+- Render performance
+- Memory usage
+- API response times
+- Cache utilization
+
+### 3. Accessibility Validation
+
+- WCAG compliance
+- Keyboard navigation
+- Screen reader support
+- Color contrast
+- Focus management
+
+### 4. Code Style Validation
+
+- ESLint rules
+- Prettier formatting
+- TypeScript strictness
+- Import organization
+- Naming conventions
+
+## Validation Procedures
+
+### 1. Pre-Commit Validation
+
+```mermaid
+Pre-Commit Flow
+├── Lint Check
+├── Type Check
+├── Test Run
+└── Size Check
+```
+
+### 2. Rule Update Validation
+
+```mermaid
+Rule Update Flow
+├── Structure Check
+├── Content Validation
+├── Reference Check
+└── Integration Test
+```
+
+### 3. Code Review Validation
+
+```mermaid
+Review Flow
+├── Automated Checks
+├── Manual Review
+├── Performance Review
+└── Security Review
+```
+
+## Error Handling
+
+### Validation Errors
+
+```typescript
+type ValidationError = {
+  type: 'error' | 'warning'
+  code: string
+  message: string
+  file?: string
+  line?: number
+  suggestion?: string
+}
+```
+
+### Error Categories
+
+1. **Critical Errors**
+   - Security vulnerabilities
+   - Type errors
+   - Build failures
+   - Test failures
+
+2. **Warnings**
+   - Style violations
+   - Performance concerns
+   - Accessibility issues
+   - Complexity warnings
+
+3. **Suggestions**
+   - Code improvements
+   - Pattern recommendations
+   - Documentation updates
+   - Test coverage
+
+## Validation Reporting
+
+### Report Format
+
+```typescript
+type ValidationReport = {
+  timestamp: string
+  status: 'pass' | 'fail' | 'warn'
+  errors: ValidationError[]
+  warnings: ValidationError[]
+  suggestions: ValidationError[]
+  metrics: {
+    coverage: number
+    complexity: number
+    performance: number
+    accessibility: number
+  }
+}
+```
+
+### Report Actions
+
+1. **Automated Fixes**
+   - Style corrections
+   - Import organization
+   - Type additions
+   - Documentation updates
+
+2. **Manual Review Required**
+   - Security issues
+   - Architecture concerns
+   - Performance problems
+   - Complex logic
+
+> 💡 **Note**: These validation rules ensure consistent quality across the codebase and rule files. They should be automatically enforced where possible and manually reviewed where necessary.

@@ -1,0 +1,30 @@
+{
+  "name": "cursor-ai-rules",
+  "version": "1.0.0",
+  "description": "Cursor AI Rules and Memory Management System",
+  "type": "module",
+  "scripts": {
+    "commit": "git-cz",
+    "format": "prettier -uwl --cache .",
+    "format:check": "prettier -uc --cache .",
+    "prepare": "husky"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.7.1",
+    "@commitlint/config-conventional": "^19.7.1",
+    "@commitlint/types": "^19.0.3",
+    "commitizen": "^4.3.1",
+    "cz-git": "^1.11.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.2",
+    "prettier-plugin-packagejson": "^2.5.8",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@10.4.1"
+}

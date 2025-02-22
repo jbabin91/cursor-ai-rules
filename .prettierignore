@@ -1,0 +1,9 @@
+**/build
+**/public
+**/.output
+**/.vinxi
+**/.drizzle
+
+pnpm-lock.yaml
+
+*.gen.ts

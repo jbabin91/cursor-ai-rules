@@ -1,0 +1,254 @@
+---
+description: Validation rules for AI memory management and quality assurance
+globs: [".cursor/rules/CURSOR_MEMORY.mdc"]
+---
+
+<details>
+<summary>Rule Metadata</summary>
+
+- **Version**: 1.0.0
+- **Created**: 2024-02-22
+- **Updated**: 2024-02-22
+- **Dependencies**:
+  - cursor-global-rules
+- **Tags**:
+  - memory
+  - validation
+  - quality
+
+</details>
+
+# Memory Validation Rules
+
+> Comprehensive validation rules for ensuring quality and consistency of AI memory management.
+
+## Memory Entry Validation
+
+### Structure Validation
+
+```mermaid
+Memory Entry Check
+├── Required Fields
+│   ├── Topic Name
+│   ├── Context
+│   ├── Pattern/Solution
+│   ├── Rationale
+│   └── Added Date
+├── Optional Fields
+│   ├── Examples
+│   └── References
+└── Metadata
+    ├── Version
+    ├── Status
+    └── Dependencies
+```
+
+### Content Quality
+
+1. **Topic Names**
+   - Must be unique
+   - Clear and descriptive
+   - Follow naming convention
+   - Maximum 50 characters
+
+2. **Context Field**
+   - Clear scope definition
+   - Specific use cases
+   - Relevant constraints
+   - Implementation context
+
+3. **Pattern/Solution**
+   - Clear implementation steps
+   - Code examples if applicable
+   - Error handling
+   - Edge cases
+
+4. **Rationale**
+   - Clear justification
+   - Trade-off analysis
+   - Alternative considerations
+   - Future implications
+
+## Memory Organization
+
+### Category Validation
+
+```mermaid
+Category Structure
+├── Project Overview
+│   └── Must include core decisions
+├── Code Patterns
+│   └── Must have examples
+├── Technical Debt
+│   └── Must have priority
+└── Development Workflow
+    └── Must be current
+```
+
+### Cross-References
+
+1. **Internal Links**
+   - Must be valid
+   - Must use correct format
+   - Must reference existing entries
+   - Must maintain hierarchy
+
+2. **Code References**
+   - Must use correct format (```startLine:endLine:filepath)
+   - Must reference existing files
+   - Must be up to date
+   - Must include context
+
+## Memory Maintenance
+
+### Validation Schedule
+
+```mermaid
+Maintenance Flow
+├── Daily
+│   └── New entry validation
+├── Weekly
+│   └── Reference checks
+├── Monthly
+│   └── Content review
+└── Quarterly
+    └── Full audit
+```
+
+### Quality Metrics
+
+1. **Completeness**
+   - All required fields present
+   - Sufficient detail level
+   - Clear examples
+   - Proper references
+
+2. **Accuracy**
+   - Current information
+   - Verified examples
+   - Valid references
+   - Tested solutions
+
+3. **Relevance**
+   - Active usage
+   - Current technology
+   - Project alignment
+   - Business value
+
+## Memory Conflict Resolution
+
+### Conflict Types
+
+1. **Content Conflicts**
+   - Contradicting patterns
+   - Overlapping solutions
+   - Inconsistent rationales
+   - Different approaches
+
+2. **Version Conflicts**
+   - Outdated information
+   - Superseded patterns
+   - Legacy references
+   - Deprecated solutions
+
+### Resolution Process
+
+```mermaid
+Conflict Resolution
+├── Identification
+│   ├── Detect conflicts
+│   └── Assess impact
+├── Analysis
+│   ├── Compare versions
+│   └── Evaluate context
+├── Resolution
+│   ├── Choose solution
+│   └── Update entries
+└── Validation
+    ├── Verify changes
+    └── Update references
+```
+
+## Memory Cleanup
+
+### Cleanup Criteria
+
+1. **Outdated Entries**
+   - Older than 6 months
+   - Deprecated technology
+   - Changed patterns
+   - Invalid references
+
+2. **Redundant Entries**
+   - Duplicate information
+   - Merged patterns
+   - Consolidated solutions
+   - Obsolete approaches
+
+### Cleanup Process
+
+```mermaid
+Cleanup Flow
+├── Identify
+│   ├── Age check
+│   ├── Usage analysis
+│   └── Relevance check
+├── Review
+│   ├── Impact assessment
+│   ├── Dependency check
+│   └── Value evaluation
+├── Action
+│   ├── Archive
+│   ├── Update
+│   ├── Merge
+│   └── Delete
+└── Validate
+    ├── Reference integrity
+    ├── Documentation
+    └── Consistency
+```
+
+## Validation Reports
+
+### Report Format
+
+```typescript
+type MemoryValidationReport = {
+  timestamp: string
+  status: 'valid' | 'invalid' | 'warning'
+  entries: {
+    total: number
+    valid: number
+    invalid: number
+    warnings: number
+  }
+  issues: Array<{
+    type: 'error' | 'warning'
+    entry: string
+    message: string
+    suggestion?: string
+  }>
+  metrics: {
+    completeness: number
+    accuracy: number
+    relevance: number
+    maintenance: number
+  }
+}
+```
+
+### Report Actions
+
+1. **Automated Actions**
+   - Format corrections
+   - Reference updates
+   - Date validations
+   - Structure fixes
+
+2. **Manual Review**
+   - Content accuracy
+   - Pattern relevance
+   - Conflict resolution
+   - Strategic decisions
+
+> 💡 **Note**: These validation rules ensure the quality and reliability of the memory system. Regular validation and maintenance are crucial for keeping the memory system valuable and effective.

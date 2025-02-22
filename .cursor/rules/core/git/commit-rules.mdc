@@ -1,0 +1,245 @@
+---
+description: Git commit message conventions and commitlint rules
+globs: ["**/.git/COMMIT_EDITMSG", "**/.gitmessage", ".commitlintrc.js"]
+---
+
+<details>
+<summary>Rule Metadata</summary>
+
+- **Version**: 1.0.0
+- **Created**: 2024-02-22
+- **Updated**: 2024-02-22
+- **Dependencies**:
+  - cursor-global-rules
+  - validation-rules
+- **Tags**:
+  - git
+  - commits
+  - conventions
+  - commitlint
+
+</details>
+
+# Git Commit Rules
+
+> Standardized commit message format using conventional commits, commitlint, and cz-git.
+
+## Commit Message Structure
+
+### Format
+
+```sh
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Types
+
+1. **Primary Types**
+   - `feat`: ✨ New feature
+   - `fix`: 🐛 Bug fix
+   - `docs`: 📝 Documentation changes
+   - `style`: 💄 Code style changes (formatting, etc.)
+   - `refactor`: ♻️ Code refactoring
+   - `perf`: ⚡️ Performance improvements
+   - `test`: ✅ Adding or modifying tests
+   - `build`: 📦️ Build system changes
+   - `ci`: 🎡 CI configuration changes
+   - `chore`: 🔨 Other changes
+
+2. **Additional Types**
+   - `revert`: ⏪️ Revert previous changes
+   - `deps`: 📌 Dependency updates
+   - `security`: 🔒 Security fixes
+   - `i18n`: 🌐 Internationalization
+   - `a11y`: ♿️ Accessibility improvements
+
+### Scopes
+
+```typescript
+type ValidScope =
+  | 'rules'      // Rule system changes
+  | 'memory'     // Memory system
+  | 'validation' // Validation rules
+  | 'core'       // Core functionality
+  | 'docs'       // Documentation
+  | 'test'       // Testing infrastructure
+  | 'config'     // Configuration
+```
+
+## Configuration Files
+
+### Base Configuration (.commitlintrc.js)
+
+```javascript
+// @ts-check
+import { defineConfig } from 'cz-git';
+
+/** @type {import('cz-git').UserConfig} */
+const config = {
+  extends: ['@commitlint/config-conventional'],
+  rules: {
+    'type-enum': [2, 'always', [
+      'feat', 'fix', 'docs', 'style', 'refactor',
+      'perf', 'test', 'build', 'ci', 'chore',
+      'revert', 'deps', 'security', 'i18n', 'a11y'
+    ]],
+    'scope-enum': [2, 'always', [
+      'rules', 'memory', 'validation', 'core',
+      'docs', 'test', 'config'
+    ]],
+    'scope-case': [2, 'always', ['lower-case']],
+    'subject-case': [2, 'always', ['lower-case']],
+    'subject-full-stop': [2, 'never', '.'],
+    'subject-min-length': [2, 'always', 5],
+    'subject-max-length': [2, 'always', 100],
+    'body-max-line-length': [2, 'always', 100],
+    'footer-max-line-length': [2, 'always', 100]
+  }
+};
+
+export default defineConfig(config);
+```
+
+### Package Configuration (package.json)
+
+```json
+{
+  "type": "module",
+  "scripts": {
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "@commitlint/types": "^19.0.0",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.11.0",
+    "husky": "^9.0.0"
+  }
+}
+```
+
+## Git Hooks
+
+### Pre-commit Hook (.husky/pre-commit)
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx lint-staged
+```
+
+### Commit Message Hook (.husky/commit-msg)
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx --no -- commitlint --edit ${1}
+```
+
+### Prepare Commit Message Hook (.husky/prepare-commit-msg)
+
+```bash
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+exec < /dev/tty && npx cz --hook || true
+```
+
+## Commit Flow
+
+### Interactive Commits
+
+You can create commits in two ways:
+
+1. **Using the commit script (Recommended)**
+
+   ```bash
+   pnpm commit
+   # or
+   npm run commit
+   ```
+
+   This will start an interactive prompt that guides you through creating a conventional commit.
+
+2. **Direct git commit**
+
+   ```bash
+   git commit
+   ```
+
+   This will still validate your commit message against the conventional commit rules.
+
+### Quick Commit Aliases
+
+The following aliases are available for common commit types:
+
+- `fd`: "docs: fix typos"
+- `ur`: "docs: update README"
+- `br`: "build: update dependencies"
+- `sc`: "style: format code style"
+
+## Validation Rules
+
+### Message Validation
+
+```mermaid
+Commit Validation
+├── Format Check
+│   ├── Type validation
+│   ├── Scope validation
+│   └── Description format
+├── Content Check
+│   ├── Length limits
+│   ├── Case rules
+│   └── Punctuation
+└── Reference Check
+    ├── Issue links
+    ├── Breaking changes
+    └── Co-authors
+```
+
+### Common Errors
+
+1. **Invalid Type**
+
+   ```sh
+   ❌ feature(rules): add validation
+   ✅ feat(rules): add validation
+   ```
+
+2. **Invalid Scope**
+
+   ```sh
+   ❌ feat(RULES): add validation
+   ✅ feat(rules): add validation
+   ```
+
+3. **Invalid Subject**
+
+   ```sh
+   ❌ feat(rules): Add Validation.
+   ✅ feat(rules): add validation
+   ```
+
+## Module System
+
+The project uses ES modules (ESM) by default:
+
+- `"type": "module"` in `package.json` enables ES modules for all `.js` files
+- Use `import`/`export` syntax in JavaScript files
+- Configuration files use ES modules (e.g., `.commitlintrc.js`)
+- No need for `.mjs` extension as `.js` files are treated as modules by default
+
+> 💡 **Note**: These commit rules ensure consistent and meaningful commit history. They are enforced through commitlint and husky hooks, with support for interactive commit creation using cz-git.
