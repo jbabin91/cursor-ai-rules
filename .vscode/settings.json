@@ -1,0 +1,48 @@
+{
+  // Markdown settings
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  },
+
+  // Markdownlint settings
+  "markdownlint.config": {
+    "default": true,
+    "MD001": false,
+    "MD012": false,
+    "MD024": false,
+    "MD025": { "front_matter_title": "" },
+    "MD026": false,
+    "MD029": false,
+    "MD031": true,
+    "MD032": true,
+    "MD033": false,
+    "MD034": true,
+    "MD036": false,
+    "MD037": false,
+    "MD040": true,
+    "MD041": false,
+    "MD046": { "style": "consistent" }
+  },
+
+  // File associations
+  "files.associations": {
+    "*.mdc": "markdown"
+  },
+
+  // Cursor AI specific settings
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true
+  },
+
+  // Workspace specific settings
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/.cursor": true
+  }
+}
