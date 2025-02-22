@@ -11,7 +11,12 @@
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-git"
+      "path": "node_modules/cz-git",
+      "disableScopeLowerCase": false,
+      "disableSubjectLowerCase": false,
+      "maxHeaderLength": 100,
+      "maxSubjectLength": 100,
+      "minSubjectLength": 5
     }
   },
   "devDependencies": {
