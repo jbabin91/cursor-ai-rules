@@ -70,6 +70,41 @@ type ValidScope =
   | 'config'     // Configuration
 ```
 
+## Commit Workflows
+
+### 1. Direct Commits (Quick)
+
+Use this method when you know the exact commit type and message:
+
+```bash
+git commit -m "type(scope): message"
+```
+
+Examples:
+
+```bash
+git commit -m "feat(rules): add new validation rule"
+git commit -m "fix(core): resolve memory leak"
+git commit -m "docs(config): update setup instructions"
+```
+
+### 2. Interactive Commits (Guided)
+
+Use this method when you want a guided process:
+
+```bash
+pnpm commit
+# or
+npm run commit
+```
+
+This will:
+
+- Show available commit types with emojis
+- List valid scopes
+- Guide you through the commit message format
+- Help with breaking changes and issue references
+
 ## Configuration Files
 
 ### Base Configuration (.commitlintrc.js)
@@ -114,16 +149,13 @@ export default defineConfig(config);
   },
   "config": {
     "commitizen": {
-      "path": "node_modules/cz-git"
+      "path": "node_modules/cz-git",
+      "disableScopeLowerCase": false,
+      "disableSubjectLowerCase": false,
+      "maxHeaderLength": 100,
+      "maxSubjectLength": 100,
+      "minSubjectLength": 5
     }
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^19.0.0",
-    "@commitlint/config-conventional": "^19.0.0",
-    "@commitlint/types": "^19.0.0",
-    "commitizen": "^4.3.0",
-    "cz-git": "^1.11.0",
-    "husky": "^9.0.0"
   }
 }
 ```
@@ -133,62 +165,14 @@ export default defineConfig(config);
 ### Pre-commit Hook (.husky/pre-commit)
 
 ```bash
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 npx lint-staged
 ```
 
 ### Commit Message Hook (.husky/commit-msg)
 
 ```bash
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
 npx --no -- commitlint --edit ${1}
 ```
-
-### Prepare Commit Message Hook (.husky/prepare-commit-msg)
-
-```bash
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-exec < /dev/tty && npx cz --hook || true
-```
-
-## Commit Flow
-
-### Interactive Commits
-
-You can create commits in two ways:
-
-1. **Using the commit script (Recommended)**
-
-   ```bash
-   pnpm commit
-   # or
-   npm run commit
-   ```
-
-   This will start an interactive prompt that guides you through creating a conventional commit.
-
-2. **Direct git commit**
-
-   ```bash
-   git commit
-   ```
-
-   This will still validate your commit message against the conventional commit rules.
-
-### Quick Commit Aliases
-
-The following aliases are available for common commit types:
-
-- `fd`: "docs: fix typos"
-- `ur`: "docs: update README"
-- `br`: "build: update dependencies"
-- `sc`: "style: format code style"
 
 ## Validation Rules
 
@@ -242,4 +226,4 @@ The project uses ES modules (ESM) by default:
 - Configuration files use ES modules (e.g., `.commitlintrc.js`)
 - No need for `.mjs` extension as `.js` files are treated as modules by default
 
-> 💡 **Note**: These commit rules ensure consistent and meaningful commit history. They are enforced through commitlint and husky hooks, with support for interactive commit creation using cz-git.
+> 💡 **Note**: These commit rules ensure consistent and meaningful commit history. Choose between direct commits for quick changes or interactive commits for guided assistance.
