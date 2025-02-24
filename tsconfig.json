@@ -32,7 +32,6 @@
     "sourceMap": true,
     "outDir": "./dist",
     "removeComments": false,
-    "importsNotUsedAsValues": "error",
     "preserveConstEnums": true,
 
     // JavaScript Support
